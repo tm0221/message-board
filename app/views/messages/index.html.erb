@@ -1,53 +1,46 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-10 col-sm-offset-1">
+<div class="container">
+  <div id="board_title">MESSAGE BOARD</div>
+  <br />
+  <hr />
       
-      <div id="board_title">MESSAGE BOARD</div>
-      <br />
-      <hr />
-      
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <span id="panel_title">MESSAGE LIST</span>
-        </div>
-        <div class="panel-body">
-          <% @messages.each do |message| %>
-            <span class="label label-info label_size"><%= message.name %></span>
-            <span id="comment_word"><%= message.body %></span>
-            <br />
-          <% end %>
-        </div>
-      </div>
-      <hr />
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <span id="panel_title">MESSAGE LIST</span>
     </div>
-  <div class="col-sm-1"></div>
+    <div class="panel-body">
+      <% @messages.each do |message| %>
+        <span class="label label-info label_size"><%= message.name %></span>
+        <%= message.body %></span>
+        <br />
+      <% end %>
+    </div>
   </div>
+  <hr />
 </div>
 <br />
 <br />
 
 <%= form_for(Message.new,html: {class: "form-horizontal"}) do |f| %>
-  <div class="container-fluid">
+  <div class="container">
+    
     <div class="row">
-      <div class="col-sm-2 col-sm-offset-1">
+      <div class="col-sm-2">
         <strong>Name:</strong>
       </div>
-      <div class="col-sm-8">
+      <div class="col-sm-10">
         <%= f.text_field :name, class: "form-control" %><br />
       </div>
-      <div class="col-sm-1"></div>
-      
-      <div class="col-sm-2 col-sm-offset-1">
+    </div>
+    
+    <div class="row">
+      <div class="col-sm-2">
         <strong>Comment:</strong>
       </div>
-      <div class="col-sm-8">
+      <div class="col-sm-10">
         <%= f.text_area :body, class: "form-control", :rows=>"4" %><br />
       </div>
-      <div class="col-sm-1"></div>
-      
-      <div class="col-sm-11 col-sm-offset-1">
-        <%= f.submit class: "btn btn-sm btn-primary" %>
-      </div>
     </div>
+    
+    <%= f.submit class: "btn btn-sm btn-primary" %>
   </div>
 <% end %>
