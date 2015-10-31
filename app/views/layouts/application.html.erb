@@ -9,7 +9,7 @@
   
   <style type="text/css">
   <!--
-  
+ 
   body {
     font-size:16px;
     color:#777;
@@ -26,6 +26,16 @@
   .label_size {
     font-size:10px;
   }
+  .icon {
+    font-size:10px;
+    color:#aaa;
+  }
+  .icon a{
+    text-decoration: none; 
+  }
+  .icon a:hover {            
+    text-decoration: none; 
+}
 
   -->
   </style>
@@ -39,13 +49,7 @@
       </div>
     </div>
   </nav>
-  <div class="container">
-    <% if notice %>
-      <div class="alert alert-info">
-        <%= notice %>
-      </div>
-    <% end %>
-    
+
     <%= yield %>
   </div>
 </body>

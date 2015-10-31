@@ -2,25 +2,42 @@
   <div id="board_title">MESSAGE BOARD</div>
   <br />
   <hr />
+  <div class="container">
+    <% if notice %>
+      <div class="alert alert-info">
+        <%= notice %>
+      </div>
+    <% end %>
+    
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <span id="panel_title">MESSAGE LIST</span>
+      </div>
       
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <span id="panel_title">MESSAGE LIST</span>
+      <div class="panel-body">
+        <% @messages.each do |message| %>
+          <span class="label label-info label_size"><%= message.name %></span>
+          <span class="label label-default label_size"><%= message.age %></span>
+          <%= message.body %>
+          &nbsp;&nbsp;
+          
+          <span class="icon">
+            <%= link_to edit_message_path(message) do %>
+              <span class="glyphicon glyphicon-pencil icon" aria-hidden="true"></span>
+            <% end %>
+          </span>
+          
+          <span class="icon">
+            <%= link_to message , method: :delete, data: { confirm: '削除してもよろしいですか？' }  do %>
+              <span class="glyphicon glyphicon-trash icon" aria-hidden="true"></span>
+            <% end %>
+          </span>
+          <br />
+        <% end %>
+      </div>
     </div>
-    <div class="panel-body">
-      <% @messages.each do |message| %>
-        <span class="label label-info label_size"><%= message.name %></span>
-        <%= message.body %>
-         (<%= link_to "edit" , edit_message_path(message) %>
-         <%= link_to "destroy" , message , method: :delete, data: { confirm: '削除してもよろしいですか？' } %>
-        )
-         <%= message.age %>
-        <br />
-      <% end %>
-    </div>
+    <hr />
   </div>
-  <hr />
-</div>
 <br />
 <br />
 
